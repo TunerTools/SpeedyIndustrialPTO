@@ -12,3 +12,16 @@ To utilize: Enable oil pressure sensor and configure appropriately for board/ana
 
 This is a beta firmware. Use at your own risk. Functionality may vary and owner/creator holds no liability for use or issues or damages that may occur 
 from use of this firmware.
+
+
+What works:
+-Ability to drive a servo based on load and RPM input (to reach fixed RPM target)
+-Load control switch (i.e. forcing load to 0) to enable secondary limiters to prevent unintended high RPM operation
+-Logging of all channels utilized for servo control
+
+Items to address:
+-Still utilizing original naming convention (i.e. VVT and OilPressure). These need to be universally addressed in the firmware for claity and more widespread use.
+    -VVT1 has been renamed to ServoControl in Tuner Studio for clarity
+- Servo control is inverted (i.e. 100% = closed, recommend no higher than 99% to prevent over driving servo shut).
+    - Ideally a function inverting the output should be added for clarity
+    - Function to add min and max servo duty scaled to the table would allow for safer and more consistent servo control. I.e. if minimum duty is set to 1% and max duty to 60% a value of 0 in the target duty table would = 1% output, and conversely a target duty of 100% would = 60%. This would provide the most resolution and prevent overdriving the servo.
